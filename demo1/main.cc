@@ -5,11 +5,10 @@ using namespace std;
 class Solution {
 public:
   void solve() {
-    int n;
-    cin >> n;
-    vector<int64_t> arr1(n);
-    for (auto & x : arr1)
-      cin >> x;
+    int x;
+    vector<int64_t> arr1;
+    while (cin >> x)
+      arr1.push_back(x);
     auto arr2 = arr1;
     sort1(arr1.begin(), arr1.end());
     sort2(arr2.begin(), arr2.end());
