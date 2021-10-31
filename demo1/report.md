@@ -78,7 +78,7 @@
     using namespace std;
     using Ele_t = decltype((*first)++);
     function<bool (Ele_t, Ele_t)> comp = [radix](Ele_t x, Ele_t y) -> bool {
-      while (x && y) {
+      while (x || y) {
         auto xx = x % radix, yy = y % radix;
         if (xx != yy) return xx < yy;
         x /= radix, y /= radix;
