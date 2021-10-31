@@ -68,3 +68,5 @@ build/
 *.tmp
 .emacs.d/*
 !.emacs.d/elpa/
+
+*.pdf
