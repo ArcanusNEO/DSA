@@ -62,7 +62,6 @@ target_wrapper.*
 *.qmlproject.user.*
 CMakeLists.txt.user*
 node_modules/
-.vscode/
 .idea/
 build/
 *.tmp
@@ -70,5 +69,12 @@ build/
 !.emacs.d/elpa/
 
 *.pdf
+<<<<<<< HEAD
 bin/
 lib/
+=======
+*.zip
+lib/
+bin/
+/.vscode/
+>>>>>>> a65c193 (.)
