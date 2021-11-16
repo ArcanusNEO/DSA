@@ -8,7 +8,7 @@
       "name": "(gdb) 启动",
       "type": "cppdbg",
       "request": "launch",
-      "program": "${workspaceFolder}/build/bin/${workspaceFolderBasename}",
+      "program": "${workspaceFolder}/build/bin/demo2",
       "args": [
         "<testbench/testbench.txt",
         ">testbench/demo2.out.txt"
