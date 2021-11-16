@@ -70,3 +70,5 @@ build/
 !.emacs.d/elpa/
 
 *.pdf
+bin/
+lib/
