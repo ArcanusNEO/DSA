@@ -73,3 +73,5 @@ build/
 lib/
 bin/
 /.vscode/
+report.assets/
+report.md
