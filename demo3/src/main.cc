@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 #include "List.hh"
 using namespace std;
-void func(List<int64_t>& ls, int64_t& ans, const function<void(int64_t& x, int64_t y)>& proc, char sep = '\0') {
+void func(List<int64_t>& ls, int64_t& ans, const function<void(int64_t& x, int64_t y)>& proc, const string head = "(", char sep = '\0', const string rear = ")") {
   int64_t n; cin >> n;
   if (n < 1) return;
   List<int64_t> r;
@@ -12,7 +12,7 @@ void func(List<int64_t>& ls, int64_t& ans, const function<void(int64_t& x, int64
   }
   cout << ans;
   if (sep) {
-    cout << "(" << r.front();
+    cout << head << r.front();
     ls.pushBack(r.front());
     r.popFront();
   }
@@ -21,7 +21,7 @@ void func(List<int64_t>& ls, int64_t& ans, const function<void(int64_t& x, int64
     ls.pushBack(r.front());
     r.popFront();
   }
-  if (sep) cout << ")";
+  if (sep) cout << "=" << ans << rear;
   cout << endl;
 }
 signed main() {
@@ -33,14 +33,16 @@ signed main() {
     case 'a': {
       int64_t x; cin >> x;
       ls.pushBack(x);
-      for (const auto& x : ls)
-        cout << x << " ";
-      cout << endl;
+      auto it = ls.begin();
+      cout << "[" << *it;
+      for (++it; it != ls.end(); ++it)
+        cout << "," << *it;
+      cout << "]" << endl;
       break;
     }
     case 'b': {
       int64_t ans = 1;
-      func(ls, ans, [](int64_t& x, int64_t y) { x *= y; }, '*');
+      func(ls, ans, [](int64_t& x, int64_t y) { x *= y; }, " (", '*', ")");
       break;
     }
     case 'c': {
