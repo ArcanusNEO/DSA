@@ -31,4 +31,54 @@ public:
       __clear(proot->son[i]), proot->son[i] = nullptr;
     delete proot;
   }
+  template<typename _Ty>
+  void toLower(_Ty&& str) {
+    for (auto it = str.begin(); it != str.end(); ++it)
+      if (*it >= 'A' && *it <= 'Z') *it += 32;
+  }
+  int64_t atoi(const string& str) {
+    int64_t ans = 0;
+    bool sign = false;
+    auto it = str.begin();
+    if (*it == '-') sign = true, ++it;
+    for (; it != str.end(); ++it) {
+      if (!(*it >= '0' && *it <= '9')) break;
+      ans = ans * 10 + (*it - 48);
+    }
+    return (sign ? -ans, ans);
+  }
+  void build(vector<string>::iterator first, vector<string>::iterator last) {
+    siz = last - first;
+    if (last - first == 0 || toLower(*first) == "null") {
+      siz = 0;
+      return;
+    }
+    root = new Node(atoi(*first));
+    queue<Node*> q;
+    q.push(root);
+    auto delNode = [](Node* nod) {
+      auto father = nod->fa;
+      bool whichSon = (father->son[1] == nod);
+      delete father->son[whichSon];
+      father->son[whichSon] = nullptr;
+    };
+    for (auto it = first; it != last; ++it) {
+      auto nod = q.front(); q.pop();
+      if (toLower(*it) == "null") {
+        --siz;
+        delNode(nod);
+        continue;
+      }
+      nod->val = atoi(*it);
+      for (int i = 0; i < 2; ++i) {
+        nod->son[i] = new Node();
+        nod->son[i]->fa = nod;
+        q.push(nod->son[i]);
+      }
+    }
+    while (!q.empty()) {
+      auto nod = q.front(); q.pop();
+      delNode(nod);
+    }
+  }
 };
