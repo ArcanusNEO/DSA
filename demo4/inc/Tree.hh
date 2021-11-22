@@ -47,7 +47,8 @@ public:
     }
     return (sign ? -ans, ans);
   }
-  void build(vector<string>::iterator first, vector<string>::iterator last) {
+  template<typename Iterator>
+  void build(Iterator first, Iterator last) {
     siz = last - first;
     if (last - first == 0 || toLower(*first) == "null") {
       siz = 0;
