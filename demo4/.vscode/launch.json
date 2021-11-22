@@ -8,10 +8,10 @@
       "name": "(gdb) 启动",
       "type": "cppdbg",
       "request": "launch",
-      "program": "${workspaceFolder}/build/bin/demo4",
+      "program": "${workspaceFolder}/build/bin/${workspaceFolderBasename}",
       "args": [
-        "<testbench/testbench.txt",
-        ">testbench/demo4.out.txt"
+        "<doc/testbench.txt",
+        ">doc/${workspaceFolderBasename}.out.txt"
       ],
       "stopAtEntry": false,
       "cwd": "${workspaceFolder}/build",
