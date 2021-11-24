@@ -159,7 +159,7 @@ public:
     if (root == nullptr) return nullptr;
     resetProperty(root);
     auto px = search(x), py = search(y);
-    if (px->val != x || py->val != y) return nullptr;
+    if (px == nullptr || py == nullptr || px->val != x || py->val != y) return nullptr;
     Node* lca = nullptr;
     while (true) {
       if (px == nullptr && py == nullptr) break;

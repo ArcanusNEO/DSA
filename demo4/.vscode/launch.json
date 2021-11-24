@@ -14,7 +14,7 @@
         ">doc/${workspaceFolderBasename}.out.txt"
       ],
       "stopAtEntry": false,
-      "cwd": "${workspaceFolder}/build",
+      "cwd": "${workspaceFolder}",
       "environment": [],
       "externalConsole": false,
       "MIMode": "gdb",
