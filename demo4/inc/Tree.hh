@@ -122,6 +122,7 @@ public:
       v.push_front(ptr->val);
       ptr = ptr->son[ptr->maxLineSon];
     }
+    v.push_back(proot->val);
     ptr = proot->son[1];
     while (ptr != nullptr) {
       v.push_back(ptr->val);
@@ -133,14 +134,12 @@ public:
     if (proot == nullptr) proot = root;
     string buf;
     function<void(Node*)> dfs = [&](Node* proot) {
-      if (proot == nullptr) {
-        if (!buf.empty()) vs.push_back(buf);
-        return;
-      }
+      if (proot == nullptr) return;
       size_t orig = buf.size();
-      buf += itoa(proot->val);
+      buf += itoa(proot->val) + " ";
       dfs(proot->son[0]);
       dfs(proot->son[1]);
+      if (proot->son[0] == nullptr && proot->son[1] == nullptr && !buf.empty()) vs.push_back(buf);
       buf.resize(orig);
     };
     dfs(proot);

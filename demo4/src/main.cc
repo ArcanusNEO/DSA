@@ -9,21 +9,28 @@ signed main() {
   vector<string> arr;
   while (~(ch = cin.get()))
     if (ch == '[') break;
-  while (~(ch = cin.peek()) && ch != ']') {
-    while (~ch && (ch == ',' || ch == ' ' || ch == '\n' || ch == '\r'))
-      cin.get(), ch = cin.peek();
+  while (true) {
+    while (~(ch = cin.peek()) && (ch == ',' || ch == ' ' || ch == '\n' || ch == '\r' || ch == '\t'))
+      cin.get();
     getline(cin, s, ',');
+    // cout << s << endl;
+    auto index = s.find(']');
+    if (index != string::npos) {
+      s.erase(index);
+      arr.push_back(s);
+      break;
+    }
     arr.push_back(s);
   }
   Tree<int> tree;
   tree.build(arr.begin(), arr.end());
   arr.clear();
-  while (~ch && !(ch >= '0' && ch <= '9' || ch == '-'))
-    cin.get(), ch = cin.peek();
+  while (~(ch = cin.peek()) && !(ch >= '0' && ch <= '9' || ch == '-'))
+    cin.get();
   int p, q;
   cin >> p;
-  while (~ch && !(ch >= '0' && ch <= '9' || ch == '-'))
-    cin.get(), ch = cin.peek();
+  while (~(ch = cin.peek()) && !(ch >= '0' && ch <= '9' || ch == '-'))
+    cin.get();
   cin >> q;
   auto lca = tree.getLca(p, q);
   if (lca == nullptr) exit(1);
