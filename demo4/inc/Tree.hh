@@ -146,6 +146,7 @@ public:
   }
   Node* __search(const T& x, Node* proot) const {
     if (proot == nullptr) return nullptr;
+    if (proot->val == x) return proot;
     Node* ret = __search(x, proot->son[0]);
     if (ret != nullptr) return ret;
     return __search(x, proot->son[1]);
