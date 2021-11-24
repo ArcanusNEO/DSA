@@ -2,9 +2,10 @@
 #include <iostream>
 using std::string;
 template<typename _Ty>
-void toLower(_Ty&& str) {
+_Ty toLower(_Ty&& str) {
   for (auto it = str.begin(); it != str.end(); ++it)
     if (*it >= 'A' && *it <= 'Z') *it += 32;
+  return str;
 }
 int64_t atoi(const string& str) {
   int64_t ans = 0;
@@ -23,7 +24,7 @@ string itoa(_Ty x) {
   string ret;
   bool sign = (x < 0);
   while (x) {
-    ret = (x % 10 + '0') + ret;
+    ret = (char) (x % 10 + '0') + ret;
     x /= 10;
   }
   if (sign) ret = "-" + ret;

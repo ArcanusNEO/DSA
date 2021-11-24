@@ -73,7 +73,7 @@ public:
     proot->vis = false;
     if (proot->son[0] == nullptr && proot->son[1] == nullptr) {
       proot->maxSub = proot->maxLine = proot->val;
-      proot->maxSub = proot;
+      proot->maxSubPtr = proot;
     } else if (proot->son[0] == nullptr) {
       proot->maxLineSon = 1;
       proot->maxLine = proot->val + proot->son[1]->maxLine;
@@ -132,7 +132,7 @@ public:
     if (root == nullptr) return;
     if (proot == nullptr) proot = root;
     string buf;
-    function<void(string&, Node*)> dfs = [&](Node* proot) {
+    function<void(Node*)> dfs = [&](Node* proot) {
       if (proot == nullptr) {
         if (!buf.empty()) vs.push_back(buf);
         return;
@@ -155,7 +155,7 @@ public:
     if (proot == nullptr) proot = root;
     return __search(x, proot);
   }
-  Node* getLca(const T& x, const T& y) const {
+  Node* getLca(const T& x, const T& y) {
     if (root == nullptr) return nullptr;
     resetProperty(root);
     auto px = search(x), py = search(y);
