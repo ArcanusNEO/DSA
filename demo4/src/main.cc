@@ -26,6 +26,7 @@ signed main() {
     cin.get(), ch = cin.peek();
   cin >> q;
   auto lca = tree.getLca(p, q);
+  if (lca == nullptr) exit(1);
   cout << lca->val << endl;
   tree.dumpToVecStr(arr, lca);
   for (const auto& str : arr)
