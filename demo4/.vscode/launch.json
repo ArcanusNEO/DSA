@@ -10,7 +10,7 @@
       "request": "launch",
       "program": "${workspaceFolder}/build/bin/${workspaceFolderBasename}",
       "args": [
-        "<doc/testbench2.txt",
+        "<doc/testbench.txt",
         ">doc/${workspaceFolderBasename}.out.txt"
       ],
       "stopAtEntry": false,
