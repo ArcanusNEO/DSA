@@ -17,6 +17,7 @@ signed main() {
   }
   Tree<int> tree;
   tree.build(arr.begin(), arr.end());
+  arr.clear();
   while (~ch && !(ch >= '0' && ch <= '9' || ch == '-'))
     cin.get(), ch = cin.peek();
   int p, q;
@@ -24,4 +25,10 @@ signed main() {
   while (~ch && !(ch >= '0' && ch <= '9' || ch == '-'))
     cin.get(), ch = cin.peek();
   cin >> q;
+  auto lca = tree.getLca(p, q);
+  cout << lca->val << endl;
+  tree.dumpToVecStr(arr, lca);
+  for (const auto& str : arr)
+    cout << str << endl;
+
 }
