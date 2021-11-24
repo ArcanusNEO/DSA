@@ -113,6 +113,22 @@ public:
       }
     }
   }
+  void dumpMaxSubToDeq(deque<T>& v, Node* proot = nullptr) const {
+    if (root == nullptr) return;
+    if (proot == nullptr) proot = root;
+    proot = proot->maxSubPtr;
+    auto ptr = proot->son[0];
+    while (ptr != nullptr) {
+      v.push_front(ptr->val);
+      ptr = ptr->son[ptr->maxLineSon];
+    }
+    v.push_back(proot->val);
+    ptr = proot->son[1];
+    while (ptr != nullptr) {
+      v.push_back(ptr->val);
+      ptr = ptr->son[ptr->maxLineSon];
+    }
+  }
   void dumpToVecStr(vector<string>& vs, Node* proot = nullptr) const {
     if (root == nullptr) return;
     if (proot == nullptr) proot = root;
