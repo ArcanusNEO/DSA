@@ -23,8 +23,9 @@ string itoa(_Ty x) {
   if (x == 0) return "0";
   string ret;
   bool sign = (x < 0);
+  if (sign) x = -x;
   while (x) {
-    ret = (char) (x % 10 + '0') + ret;
+    ret = (char) ('0' + x % 10) + ret;
     x /= 10;
   }
   if (sign) ret = "-" + ret;

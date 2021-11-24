@@ -41,6 +41,10 @@ signed main() {
   deque<int> v;
   tree.dumpMaxSubToDeq(v, lca);
   cout << lca->maxSub << " (";
-  for (size_t i = 0; i < v.size(); ++i)
-    cout << v[i] << "+)"[i == v.size() - 1];
+  cout << v[0];
+  for (size_t i = 1; i < v.size(); ++i) {
+    if (v[i] < 0) cout << v[i];
+    else cout << "+" << v[i];
+  }
+  cout << ")";
 }
