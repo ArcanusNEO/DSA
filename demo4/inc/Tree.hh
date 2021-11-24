@@ -8,6 +8,7 @@ public:
     Node* fa, * son[2];
     T val;
     size_t siz;
+    Node* maxSub = nullptr;
     Node(const T& _val = T(), const size_t& _siz = 1, Node* father = nullptr, Node* ls = nullptr, Node* rs = nullptr)
       : val(_val), siz(_siz) {
       fa = father;
