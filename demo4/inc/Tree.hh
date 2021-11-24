@@ -122,7 +122,6 @@ public:
       v.push_front(ptr->val);
       ptr = ptr->son[ptr->maxLineSon];
     }
-    v.push_back(proot->val);
     ptr = proot->son[1];
     while (ptr != nullptr) {
       v.push_back(ptr->val);

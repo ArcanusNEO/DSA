@@ -30,5 +30,9 @@ signed main() {
   tree.dumpToVecStr(arr, lca);
   for (const auto& str : arr)
     cout << str << endl;
-
+  deque<int> v;
+  tree.dumpMaxSubToDeq(v, lca);
+  cout << lca->maxSub << " (";
+  for (size_t i = 0; i < v.size(); ++i)
+    cout << v[i] << "+)"[i == v.size() - 1];
 }
